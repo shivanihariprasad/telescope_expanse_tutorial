@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-SLURM_JOB_ID=squeue -u $LOGNAME |grep $HOSTNAME | awk '{print $1}'
+SLURM_JOB_ID="$(squeue -u $LOGNAME |grep $HOSTNAME | awk '{print $1}')"
 
 cd "/scratch/${USER}/job_${SLURM_JOB_ID}"
 cp -r ~/telescope_expanse_tutorial "/scratch/${USER}/job_${SLURM_JOB_ID}/"
