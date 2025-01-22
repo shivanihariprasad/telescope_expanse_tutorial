@@ -6,7 +6,7 @@ cp -r ~/telescope_expanse_tutorial "/scratch/${USER}/job_${SLURM_JOB_ID}/"
 python3.9 -m venv .venv
 . ./.venv/bin/activate
 pip install --upgrade pip
-pip install jupyter pyspark==3.2.1 pandas matplotlib seaborn scipy findspark
+pip install jupyter pyspark==3.2.1 pandas matplotlib seaborn scipy findspark pyarrow fastparquet
 
 # 1 day of flowtuples
 # compute-1x128_128G.slurm   3min 51s
