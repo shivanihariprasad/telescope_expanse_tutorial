@@ -10,10 +10,12 @@
 #SBATCH --time=00:30:00
 #SBATCH --output="joblogs/slurm-%A_%a.out"
 
-cd /home/${USER}/expanse_spark/slurm_scripts
-. launch-spark.sh
-. bootstrap_env.sh
+REPO_DIR=/home/${USER}/telescope_expanse_tutorial
+
+cd ${REPO_DIR}/slurm_scripts
+/bin/bash launch-spark.sh
+/bin/bash bootstrap_env.sh
 
 # Launch Jupyter and sleep forever
-jupyter-lab --port 8135 --no-browser
+#jupyter-lab --port 8135 --no-browser
 sleep infinity
