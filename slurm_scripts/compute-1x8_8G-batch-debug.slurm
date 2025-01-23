@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=spark-pi
-#SBATCH --partition=debug
-#SBATCH --account=<acct name>
+#SBATCH --partition=shared
+#SBATCH --account=csd939
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --ntasks-per-node=1
@@ -12,6 +12,7 @@
 
 REPO_DIR=/home/${USER}/telescope_expanse_tutorial
 cd ${REPO_DIR}/slurm_scripts
+
 /bin/bash launch-spark.sh
 /bin/bash bootstrap_env.sh
 
