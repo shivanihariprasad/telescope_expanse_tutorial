@@ -17,8 +17,9 @@ cd ${REPO_DIR}/slurm_scripts
 /bin/bash bootstrap_env.sh
 
 #load ucsdnt s3 key into the environment 
-soruce /expanse/lustre/projects/csd939/kmok/.ucsdnts3.key
+source /expanse/lustre/projects/csd939/kmok/.ucsdnts3.key
 # Submit batch job
 cd ${REPO_DIR}/example_ft_batch/
 batch_script="count-dstnet.py"
-spark-submit --packages org.apache.spark:spark-avro_2.12:3.2.1,org.apache.hadoop:hadoop-aws:3.3.1,com.amazonaws:aws-java-sdk-bundle:1.12.262 "$batch_script"
+
+/expanse/lustre/scratch/${USER}/temp_project/spark-3.2.1/bin/spark-submit --packages org.apache.spark:spark-avro_2.12:3.2.1,org.apache.hadoop:hadoop-aws:3.3.1,com.amazonaws:aws-java-sdk-bundle:1.12.262 "$batch_script"
