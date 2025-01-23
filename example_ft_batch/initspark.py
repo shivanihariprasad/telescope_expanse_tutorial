@@ -2,23 +2,23 @@ import os
 import socket
 
 from pyspark.sql import SparkSession
+from pyspark import SQLContext
 
-# Extracted from https://github.com/CAIDA/expanse_spark/blob/main/SparkPOC.ipynb
 
 def connect():
-    user = "bjd"
+    user = os.getenv("USER")
     hostname = socket.getfqdn()
 
     os.environ["HADOOP_OPTS"] = (
         "-Djava.library.path=/cm/shared/apps/spack/cpu/opt/spack/linux-centos8-zen/gcc-8.3.1/hadoop/3.2.2/lib/native"
     )
     os.environ["PYSPARK_SUBMIT_ARGS"] = (
-        r"--jars /expanse/lustre/scratch/bjd/temp_project/spark-3.2.1/ext_jars/* --packages org.apache.spark:spark-avro_2.12:3.2.1 pyspark-shell"
+        fr"--jars /expanse/lustre/scratch/{user}/temp_project/spark-3.2.1/ext_jars/* --packages org.apache.spark:spark-avro_2.12:3.2.1 pyspark-shell"
     )
     os.environ["SPARK_LIB"] = os.environ["SPARK_HOME"]
 
-    UCSD_NT_S3_ACCESS_KEY = ""
-    UCSD_NT_S3_SECRET_KEY = ""
+    UCSD_NT_S3_ACCESS_KEY = os.getenv("UCSD_NT_S3_ACCESS_KEY")
+    UCSD_NT_S3_SECRET_KEY = os.getenv("UCSD_NT_S3_SECRET_KEY")
     MASTER_URL = rf"spark://{hostname}:7077"
 
     return (
