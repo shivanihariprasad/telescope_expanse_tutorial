@@ -17,5 +17,5 @@ cd ${REPO_DIR}/slurm_scripts
 /bin/bash bootstrap_env.sh
 
 # Launch Jupyter and sleep forever
-#jupyter-lab --port 8135 --no-browser
+#jupyter-lab --port 9000 --no-browser
 sleep infinity
