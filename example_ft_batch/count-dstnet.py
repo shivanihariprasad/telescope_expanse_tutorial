@@ -1,5 +1,4 @@
 
-import pytz
 import initspark
 
 import pandas as pd
