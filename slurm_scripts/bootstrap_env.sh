@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 #SLURM_JOB_ID="$(squeue -u $USER |grep $HOSTNAME | awk '{print $1}')"
 
-cd "/scratch/${USER}/job_${SLURM_ARRAY_TASK_ID}"
+cd "/scratch/${USER}/job_${SLURM_ARRAY_JOB_ID}"
 cp -r ~/telescope_expanse_tutorial "/scratch/${USER}/job_${SLURM_ARRAY_TASK_ID}/"
 python3.9 -m venv .venv
 . ./.venv/bin/activate
