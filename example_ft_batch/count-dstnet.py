@@ -1,12 +1,13 @@
 
 import initspark
 
+import os
 import pandas as pd
+
 import pyspark
 from pyspark import SQLContext
 import pyspark.sql.functions as psf
 import pyspark.sql.types as pst
-
 
 spark = initspark.connect()
 #spark
@@ -37,8 +38,9 @@ def load_ft_pyspark(avro_files):
 
 
 PROJECT = "csd939"
+USER = os.environ['USER']
 
-OUT_DIR = '/expanse/lustre/projects/{PROJECT}/{user}/shared_data/case_study_2'
+OUT_DIR = f'/expanse/lustre/projects/{PROJECT}/{USER}/'
 START_1 = '2024-01-01 00:00'
 END_1 = '2024-01-01 00:30'
 
@@ -47,7 +49,7 @@ end_1 = pd.to_datetime(END_1)
 
 sqlcontext = SQLContext(spark)
 
-avro_filename = '../ft4_file_lists/ft4_2024_files.parquet.gzip'
+avro_filename = f'/home/{USER}/telescope_expanse_tutorial/ft4_file_lists/ft4_2024_files.parquet.gzip'
 s3_pre_uri = 's3a://telescope-ucsdnt-avro-flowtuple-v4-2024/'
 
 avro_uris = generate_avro_uris(avro_filename, start_1, end_1, s3_pre_uri)
@@ -56,6 +58,6 @@ spark_df = load_ft_pyspark(list(avro_uris))
 result = spark_df.groupby('dst_net').agg(
     psf.sum('packet_cnt'), 
     psf.countDistinct('src_ip')
-).csv(
-        f"{OUT_DIR}/dstnet_pkt_sources"
-)
+).toPandas()
+
+result.to_csv(f"{OUT_DIR}/dstnet_pkt_sources.csv")
