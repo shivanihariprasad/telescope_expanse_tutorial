@@ -19,8 +19,8 @@ cd ${REPO_DIR}/slurm_scripts
 #load ucsdnt s3 key into the environment 
 source /expanse/lustre/projects/csd939/kmok/.ucsdnts3.key
 # Submit batch job
-cd ${REPO_DIR}/example_ft_batch/
-batch_script="count-dstnet.py"
+#cd ${REPO_DIR}/example_ft_batch/
+batch_script="${REPO_DIR}/example_ft_batch/count-dstnet.py"
 #batch_script="run_batch.sh ${SLURM_JOB_ID}"
 
 
