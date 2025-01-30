@@ -1,0 +1,13 @@
+FROM golang:1.23
+
+WORKDIR /go/src/ucsdntexample
+
+RUN git clone git@github.com:CAIDA/goucsdnt.git
+
+WORKDIR /go/src/ucsdntexample/goucsdnt
+
+RUN go mod downlaod
+
+RUN go build -o /go/bin/ucsdntexample analyzepcaps3.go
+
+CMD ["/go/bin/ucsdntexample"]
