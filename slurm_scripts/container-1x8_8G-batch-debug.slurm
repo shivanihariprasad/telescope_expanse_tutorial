@@ -16,7 +16,7 @@ module load slurm
 module load cpu/0.15.4
 module load singularitypro
 
-JOB_OUTPUT_DIR=/expanse/lustre/projects/csd939/${USER}/golang_container_output'
+JOB_OUTPUT_DIR=/expanse/lustre/projects/csd939/${USER}/golang_container_output
 mkdir -p $JOB_OUTPUT_DIR
 
 singularity exec --env-file /expanse/lustre/projects/csd939/kmok/.ucsdnts3.env \
