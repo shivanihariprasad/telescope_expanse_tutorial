@@ -23,7 +23,7 @@ mkdir -p $JOB_OUTPUT_DIR
 singularity exec --env-file /expanse/lustre/projects/csd939/kmok/.ucsdnts3.env \
     --bind /expanse/lustre/projects/csd939/${USER}/golang_container_output:/output \
     /expanse/lustre/projects/csd939/kmok/shared_data/expanse-uscdnt-golang.sif \
-    cat /output/filelists.csv | parallel \
+    cat /output/filelists.csv | /usr/bin/parallel \
         -j 5 \
         --joblog /output/joblog_{#}/ \
         --results /output/results_{#} \
