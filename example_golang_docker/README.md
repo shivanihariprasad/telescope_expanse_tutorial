@@ -22,13 +22,13 @@ In this tutorial, we will push our image into this repository.
 As SDSC Expanse does not install Docker and provide `sudo` to users, you have to build the image on your local machine. Install [docker](https://docs.docker.com/engine/install/) if necessary.
 `docker built -t <your docker hub username>/<your dockerhub repo>:<tag> .`
 For example, 
-`docker build  -t caidaricky/expanse-uscdnt-golang:0.1 .`
+`docker build  -t caidaricky/expanse-uscdnt-golang:0.1.3 .`
 ### 2.4 Push the image to Docker Hub
 You upload the built image to Docker hub. Note that free account only allow you to have one private image. As your image is public, everyone can pull and inspect your code and credentials (if you leave them into the image). **Do not put any credentials/keys into the image. Import them in runtime.**
 To push your image:
 `docker push <your docker hub username>/<your dockerhub repo>:<tag>`
 For this tutorial:
-`docker push caidaricky/expanse-uscdnt-golang:0.1`
+`docker push caidaricky/expanse-uscdnt-golang:0.1.3`
 
 ## Step 3: Build singularity image (on your machine)
 ### 3.1 Install singularity
@@ -45,7 +45,7 @@ $ sudo apt-get install singularity-container
 Singularity supports converting docker images directly from Docker Hub using this command. Singularity image uses file extension `.sif`.
 `sudo singularity build <singularity_image_name>.sif docker://<path to your dockerhub image>`
 Our example: 
-`sudo singularity build expanse-uscdnt-golang.sif docker://caidaricky/expanse-uscdnt-golang:0.1`
+`sudo singularity build expanse-uscdnt-golang.sif docker://caidaricky/expanse-uscdnt-golang:0.1.3`
 
 ### 3.3 Transfer the image to Expanse
 You can use the Lustre storage on SDSC Expanse to store your image. 
