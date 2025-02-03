@@ -2,11 +2,13 @@
 
 This repository contains tutorial materials for analyzing UCSD network telescope data on SDSC Expanse HPC. 
 
-# Prerequisite
+# Prerequisite 
+ 1. Register an account on [ACCESS-CI](https://access-ci.org) 
+ 2. Apply for allocation on [ACCESS-CI](https://access-ci.org) 
+ 3. Exchange your credits into SDSC Expanse CPU and Project Storage credits
+ 4. Credential for accessing CAIDA's Swift object storage
 
- - Apply for allocation on [ACCESS-CI](https://access-ci.org) 
- - Exchange your credits into SDSC Expanse CPU and Project Storage credits
- - Credential for accessing CAIDA's Swift object storage
+**For AIMS 2025 participants, we have already prepared 2-4 for you.**
 
 # Directory structure
 `slurm_scripts`:
