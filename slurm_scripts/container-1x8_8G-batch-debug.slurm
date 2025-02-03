@@ -18,9 +18,10 @@ module load singularitypro
 
 JOB_OUTPUT_DIR=/expanse/lustre/projects/csd939/${USER}/golang_container_output
 mkdir -p $JOB_OUTPUT_DIR
-
+SCRATCH_DIR="/scratch/${USER}/job_${SLURM_JOB_ID}"
+mkdir -p ${SCRATCH_DIR}
 
 singularity exec --env-file /expanse/lustre/projects/csd939/kmok/.ucsdnts3.env \
-    --bind /expanse/lustre/projects/csd939/${USER}/golang_container_output:/output \
+    --bind /expanse/lustre/projects/csd939/${USER}/golang_container_output:/output,/tmp,/scratch \
     /expanse/lustre/projects/csd939/kmok/shared_data/expanse-uscdnt-golang.sif \
     /go/bin/ucsdntexample -o /output -c 100 -e "2025-01-25T02:59:59Z"
