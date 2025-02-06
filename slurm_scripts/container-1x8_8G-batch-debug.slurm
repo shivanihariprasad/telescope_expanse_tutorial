@@ -1,6 +1,6 @@
 #!/bin/bash -e
 #SBATCH --job-name=CAIDAGOCONTAINER
-#SBATCH --partition=debug
+#SBATCH --partition=compute
 #SBATCH --account=csd939
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -23,5 +23,5 @@ mkdir -p ${SCRATCH_DIR}
 
 singularity exec --env-file /expanse/lustre/projects/csd939/kmok/.ucsdnts3.env \
     --bind /expanse/lustre/projects/csd939/${USER}/golang_container_output:/output,/tmp,/scratch \
-    /expanse/lustre/projects/csd939/kmok/shared_data/expanse-uscdnt-golang.sif \
-    /go/bin/ucsdntexample -o /output -c 100 -e "2025-01-25T02:59:59Z"
+    /expanse/lustre/projects/csd939/shariprasad1/starlink-ucsdnt.sif  \
+    /go/bin/ucsdntexample -o /output -j 4"
